@@ -12121,7 +12121,7 @@ There are 836 test dog images.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 2:</strong> This algorithmic choice necessitates that we communicate to the user that we accept human images only when they provide a clear view of a face (otherwise, we risk having unneccessarily frustrated users!). In your opinion, is this a reasonable expectation to pose on the user? If not, can you think of a way to detect humans in images that does not necessitate an image with a clearly presented face?</p>
-<p><strong>Answer:</strong> Our algorithm should be able to detect humans in various poses whether they are standing, sitting, looking in the camera or looking away, wearing glasses or not wearing glasses. There are so many differnt shapes, different expressions a human face could be found in images. We should not put constraints on the user to be in a specific position to be detected. I think humans faces are very much differentiable from other animals and they are very much detectable. We can take a dataset containing human face images in different form, of different colour, different race, different size, different sex and images that doesn't contain human faces which might be of some animal or some nature photos, buildings etc. and train a CNN on that. Our model should be able to learn different kinds of pattern of human faces without explicitly specifying the features like in the case of Haar Cascades.</p>
+<p><strong>Answer:</strong></p>
 <p>We suggest the face detector from OpenCV as a potential way to detect human images in your algorithm, but you are free to explore other approaches, especially approaches that make use of deep learning :).  Please use the code cell below to design and test your own face detection algorithm.  If you decide to pursue this <em>optional</em> task, report performance on each of the datasets.</p>
 
 </div>
@@ -12499,7 +12499,7 @@ $$</p>
 <p>We have imported some Python modules to get you started, but feel free to import as many modules as you need.  If you end up getting stuck, here's a hint that specifies a model that trains relatively fast on CPU and attains &gt;1% test accuracy in 5 epochs:</p>
 <p><img src="images/sample_cnn.png" alt="Sample CNN"></p>
 <p><strong>Question 4:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  If you chose to use the hinted architecture above, describe why you think that CNN architecture should work well for the image classification task.</p>
-<p><strong>Answer:</strong> I used 3 convolution layers each accompanied by MaxPooling. The overall idea was to make the neural net extract abstract features. The first layer would learn to detect the edges, second would learn to detect complex images like circle, square etc. The final layer might learn to detect different parts of a dog, like eyes, ears, legs. The above architecture looks simple enough to capture this abstraction. First step we are convoluting with 16 2x2 filters which gives different feature maps. Next we use max pooling to get important pixels while decreasing size. Next we use convolution layer with 32 2x2 filters which gives more feature maps which might have more complex shapes detected. At 3rd layer we use convolution with 64 filters as there would be even more complex shapes to be detected. So better to keep more filters to increase the chances of getting better feature maps. At the end we then take the global average and add a dense layer to calculate the probability of each 133 classes.</p>
+<p><strong>Answer:</strong> The above defined model looks simple. First step we are convoluting with 16 2x2 filters which gives different feature maps. Next we use max pooling to get important pixels while decreasing size. Next we use convolution layer with 32 2x2 filters which gives more feature maps which might have more complex shapes detected. At 3rd layer we use convolution with 64 filters as there would be even more complex shapes to be detected. So better to keep more filters to increase the chances of getting better feature maps. At the end we then take the global average and add a dense layer to calculate the probability of each 133 classes.</p>
 
 </div>
 </div>
@@ -13134,7 +13134,7 @@ test_{network} = bottleneck_features['test']</code></pre>
 
 </code></pre>
 <p><strong>Question 5:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong> I chose Resnet50 as its other variant with 152 layers has won the 2015 ImageNet competition. Since it is already trained on a lot of data, it will provide better representative vector for the image. Further I used a global average pooling to map the feature. This could have been directly used as well for predicting probability but then I thought to add a little more complexity and added a dense relu layer with dropout of 0.5 to capture more abstract features. Finally I used a dense softmax layer to predict the probabilities for each class.</p>
 
 </div>
 </div>
